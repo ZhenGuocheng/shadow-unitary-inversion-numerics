@@ -1,0 +1,22 @@
+# MATLAB autosave / backup
+*.asv
+*.m~
+*.autosave
+
+# MATLAB generated folders
+slprj/
+codegen/
+
+# MEX binaries (platform dependent)
+*.mex*
+*.mexa64
+*.mexw64
+*.mexmaci64
+
+# Optional: results / outputs (recommended)
+results/*
+!results/.gitkeep
+
+# OS junk
+.DS_Store
+Thumbs.db
