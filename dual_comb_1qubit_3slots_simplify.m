@@ -148,3 +148,4 @@ function C = ConstructBlockVariable(lamb, A, X, coors, b_dim, coor_dim)
     end
     C = C_diag + C_off;
 end
+
