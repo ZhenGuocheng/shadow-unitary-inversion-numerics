@@ -102,7 +102,6 @@ cvx_begin sdp
 cvx_end
 
 
-%% functions
 function U = ConstructSchurTransformation(vec, yd_label, dims)
     label = [1, yd_label];
     Id = eye(dims(1));
@@ -142,5 +141,6 @@ function C = ConstructBlockVariable(lamb, A, X, coors, b_dim, coor_dim)
     end
     C = C_diag + C_off;
 end
+
 
 
