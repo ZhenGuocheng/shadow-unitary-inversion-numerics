@@ -1,6 +1,5 @@
 clear; 
 
-%% initialization
 d = 2;
 % database
 X = [0 1; 1 0];
@@ -9,10 +8,8 @@ Z = [1 0; 0 -1];
 I = eye(d);
 Obs = Z;
 
-% initialize for integral
 n_U = 2000;
 
-%% construct SW trans
 yd = {{5},{3,3,3},{1,1}};
 l1 = [1,2,2,3,2,3,3,4];
 l2 = [1,2];
@@ -23,7 +20,6 @@ B = load("U_sch_3slot.mat");
 B = B.data;
 SW_trans = ConstructSchurTransformation(B, cell2mat([yd{:}]), [2^t, 2]);
 
-%% generate equivalent blocks
 block_store = {};
 for yd_e=yd
     tup_block = {};
@@ -52,7 +48,6 @@ for tup=block_store
 end
 
 
-%% cvx optimization
 cvx_begin sdp
 
     % construct C
@@ -104,7 +99,6 @@ cvx_begin sdp
 cvx_end
 
 
-%% functions
 function U = ConstructSchurTransformation(vec, yd_label, dims)
     label = [1, yd_label];
     Id = eye(dims(1));
@@ -143,4 +137,5 @@ function C = ConstructBlockVariable(lamb, A, X, coors, b_dim, coor_dim)
         C_off(precoor(2)*b_dim+1:coor(2)*b_dim, precoor(1)*b_dim+1:coor(1)*b_dim) = A(:, :, j)';
     end
     C = C_diag + C_off;
+
 end
